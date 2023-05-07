@@ -27,6 +27,27 @@
             </div>
         </form>
     </div>
+    <br>
+    <div>
+        <h2>Current employees</h2>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Salary</th>
+            </tr>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.employeeId}"></td>
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.surname}"></td>
+                <td th:text="${employee.salary}"></td>
+                <!-- Tutaj dodamy definicje przycisków Show i Delete -->
+            </tr>
+        </table>
+    </div>
+
 </div>
 </body>
 </html>
+
