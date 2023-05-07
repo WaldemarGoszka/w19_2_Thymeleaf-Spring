@@ -42,7 +42,15 @@
                 <td th:text="${employee.name}"></td>
                 <td th:text="${employee.surname}"></td>
                 <td th:text="${employee.salary}"></td>
-                <!-- Tutaj dodamy definicje przycisków Show i Delete -->
+                <!-- Obsługa przycisku Show-->
+                <td>
+                    <form action="#"
+                          th:action="@{employees/show/{employeeId}(employeeId=${employee.employeeId})}"
+                          method="GET">
+                        <button type="submit" class="btn btn-info">Show</button>
+                    </form>
+                </td>
+                <!-- Obsługa przycisku Show-->
             </tr>
         </table>
     </div>

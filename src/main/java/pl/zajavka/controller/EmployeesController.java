@@ -1,12 +1,10 @@
 package pl.zajavka.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.zajavka.infrastructure.database.entity.EmployeeEntity;
 import pl.zajavka.infrastructure.database.repository.EmployeeRepository;
 
@@ -41,4 +39,13 @@ public class EmployeesController {
         return "employees";
     }
 
+    @GetMapping("/show/{employeeId}")
+    public String showEmployeeDetails(@PathVariable Integer employeeId, Model model) {
+        EmployeeEntity employeeDetails = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("EmployeeEntity not found, employeeId: [%s]", employeeId)));
+        model.addAttribute("employee", employeeDetails);
+        return "employeeDetails";
+
+    }
 }
