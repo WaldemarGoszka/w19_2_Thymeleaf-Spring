@@ -22,11 +22,31 @@
                 Surname: <input type="text" th:name="surname"/>
                 Salary: <input type="text" th:name="salary"/>
             </div>
+            <br>
             <div class="form-group">
                 <input type="submit" value="Create employee" name="button"/>
             </div>
         </form>
     </div>
+    <br>
+    <!-- Obsługa Update-->
+    <h2>Update an employee</h2>
+    <form action="#"
+          th:action="@{/employees/update}"
+          th:method="PUT"
+          th:object="${updateEmployeeDTO}">
+        <div class="form-group">
+            Id: <input type="text" th:field="*{employeeId}"/>
+            Name: <input type="text" th:field="*{name}"/>
+            Surname: <input type="text" th:field="*{surname}"/>
+            Salary: <input type="text" th:field="*{salary}"/>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="submit" value="Update employee" name="button"/>
+        </div>
+    </form>
+    <!-- Obsługa Update-->
     <br>
     <div>
         <h2>Current employees</h2>
@@ -36,6 +56,7 @@
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Salary</th>
+                <th></th>
             </tr>
             <tr th:each="employee : ${employees}">
                 <td th:text="${employee.employeeId}"></td>
