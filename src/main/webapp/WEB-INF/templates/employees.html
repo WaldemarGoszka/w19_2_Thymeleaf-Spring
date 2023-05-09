@@ -57,6 +57,7 @@
                 <th>Surname</th>
                 <th>Salary</th>
                 <th></th>
+                <th></th>
             </tr>
             <tr th:each="employee : ${employees}">
                 <td th:text="${employee.employeeId}"></td>
@@ -72,6 +73,15 @@
                     </form>
                 </td>
                 <!-- Obsługa przycisku Show-->
+                <!-- Obsługa przycisku Delete-->
+                <td>
+                    <form action="#"
+                          th:action="@{employees/delete/{employeeId}(employeeId=${employee.employeeId})}"
+                          th:method="DELETE">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+                <!-- Obsługa przycisku Delete-->
             </tr>
         </table>
     </div>
